@@ -1,5 +1,7 @@
 //receiving email
 var express = require('express');
+var dkim = require('dkim');
+
 var app = module.exports = express.createServer()
   , formidable = require('formidable')
 
@@ -15,4 +17,7 @@ var app = module.exports = express.createServer()
   })
 })
 
-app.listen(3000);
+//app.listen(3000);
+
+//message must be a buffer
+dkim.verify(message, callback());
