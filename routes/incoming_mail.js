@@ -2,7 +2,7 @@
 var express = require('express');
 var dkim = require('dkim');
 var assert = require('assert');
-var fs = require('file-system');
+
 
 var router = express.Router();
 var formidable = require('formidable');
@@ -24,41 +24,41 @@ router.post('/', function(req, res){
     res.end('Message Received. Thanks!\r\n')
 
     //message must be a buffer
-    // var fileBuffer = fs.readFile(files, function(err, buffer) {
-    //   if (err) throw err;
-    //   console.log(buffer);
-    // });
-    // dkim.verify(fileBuffer, function(error, res){
+//     var fileBuffer = fs.readFile(files, function(err, buffer) {
+//       if (err) throw err;
+//       console.log(buffer);
+//     });
+//     dkim.verify(fileBuffer, function(error, res){
 
-    //   assert.ifError( error )
-    //   assert.ok( res && res.length > 0 )
-    //   assert.ok(res.every( function (record) {
-    //     return record.verified
-    //   }))
-    //   done( error)
-
-
-      //mailgun
-
-// var mailgun = require("mailgun-js");
-// var api_key = 'key-2e1e88c4d4b1e5e8f970be8514c4317e';
-// var DOMAIN = 'sandbox5dde7e1a07364b75901565f04dc84ed5.mailgun.org';
-// var mailgun = require('mailgun-js')({apiKey: api_key, domain: DOMAIN});
-
-// var data = {
-//   from: 'Admin, <sandbox5dde7e1a07364b75901565f04dc84ed5.mailgun.org>',
-//   to: fields.from,
-//   subject: 'Reply',
-//   text: 'DKIM settings configured correctly'
-// };
-
-// mailgun.messages().send(data, function (error, body) {
-//   console.log(body);
-// });
-      //mailgun
+//       assert.ifError( error )
+//       assert.ok( res && res.length > 0 )
+//       assert.ok(res.every( function (record) {
+//         return record.verified
+//       }))
+//       done( error)
 
 
-    })
+//       //mailgun
+
+// // var mailgun = require("mailgun-js");
+// // var api_key = 'key-2e1e88c4d4b1e5e8f970be8514c4317e';
+// // var DOMAIN = 'sandbox5dde7e1a07364b75901565f04dc84ed5.mailgun.org';
+// // var mailgun = require('mailgun-js')({apiKey: api_key, domain: DOMAIN});
+
+// // var data = {
+// //   from: 'Admin, <sandbox5dde7e1a07364b75901565f04dc84ed5.mailgun.org>',
+// //   to: fields.from,
+// //   subject: 'Reply',
+// //   text: 'DKIM settings configured correctly'
+// // };
+
+// // mailgun.messages().send(data, function (error, body) {
+// //   console.log(body);
+// // });
+//       //mailgun
+
+
+//     })
 
   })
 });
