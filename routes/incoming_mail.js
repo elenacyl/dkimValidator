@@ -34,12 +34,12 @@ router.post('/', function(req, res){
       //mailgun
       var mailgun = require("mailgun-js");
       var api_key = 'key-a2a43226f5e6ccafba8fb372620cee12';
-      //var DOMAIN = 'YOUR_DOMAIN_NAME';
-      var mailgun = require('mailgun-js')({apiKey: api_key});
+      var DOMAIN = 'sandboxccf0d831e6f34ba7b09a420ccf675a31.mailgun.org';
+      var mailgun = require('mailgun-js')({apiKey: api_key, domain: DOMAIN});
 
 var data = {
   from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
-  to: 'elenachoo@u.nus.edu',
+  to: 'elenachoo@u.nus.edu, sandboxccf0d831e6f34ba7b09a420ccf675a31.mailgun.org',
   subject: 'Reply',
   text: 'Settings configured correctly!'
 };
