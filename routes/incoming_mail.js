@@ -32,7 +32,7 @@ router.post('/', function(req, res){
       assert.ok(res.every( function (record) {
         return record.verified
       }))
-      done( error)
+      
 
 
 //       //mailgun
