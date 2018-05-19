@@ -23,25 +23,22 @@ router.post('/', function(req, res){
     console.log(fields.subject)
     console.log("reach 3")
     console.log(fields.message)
-    console.log("reach 4")
     res.writeHead(200, {'content-type': 'text/plain'})
-    console.log("reach 5")
     res.end('Message Received. Thanks!\r\n')
-    console.log("reach 6")
 
     //message must be a buffer
-//     var fileBuffer = fs.readFile(files, function(err, buffer) {
-//       if (err) throw err;
-//       console.log(buffer);
-//     });
-//     dkim.verify(fileBuffer, function(error, res){
+    var fileBuffer = fs.readFile(files.upload.path, function(err, buffer) {
+      if (err) throw err;
+      console.log(buffer);
+    });
+    dkim.verify(fileBuffer, function(error, res){
 
-//       assert.ifError( error )
-//       assert.ok( res && res.length > 0 )
-//       assert.ok(res.every( function (record) {
-//         return record.verified
-//       }))
-//       done( error)
+      assert.ifError( error )
+      assert.ok( res && res.length > 0 )
+      assert.ok(res.every( function (record) {
+        return record.verified
+      }))
+      done( error)
 
 
 //       //mailgun
@@ -64,7 +61,7 @@ router.post('/', function(req, res){
 //       //mailgun
 
 
-//     })
+  })
 
   })
 });
