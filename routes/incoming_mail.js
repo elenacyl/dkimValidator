@@ -28,7 +28,8 @@ router.post('/', function(req, res){
     dkim.verify(Buffer.from(fields.message), function(error, res){
 
       assert.ifError( error )
-      assert.ok( (res && res.length > 0), 'response exists' )
+      assert.ok( false, 'test false message')
+      assert.ok( res && res.length > 0)
       // assert.ok(res.every( function (record) {
       //   return record.verified
       // }))
