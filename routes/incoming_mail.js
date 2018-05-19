@@ -25,7 +25,7 @@ router.post('/', function(req, res){
 
     //message must be a buffer
 
-    dkim.verify(fields.message, function(error, res){
+    dkim.verify(new buffer(fields.message), function(error, res){
 
       assert.ifError( error )
       assert.ok( res && res.length > 0 )
