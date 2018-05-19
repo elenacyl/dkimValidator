@@ -17,11 +17,17 @@ router.post('/', function(req, res){
       res.send("Error occurred")
     }
     console.log(fields.to)
+    console.log("reach 1")
     console.log(fields.from)
+    console.log("reach 2")
     console.log(fields.subject)
+    console.log("reach 3")
     console.log(fields.message)
+    console.log("reach 4")
     res.writeHead(200, {'content-type': 'text/plain'})
+    console.log("reach 5")
     res.end('Message Received. Thanks!\r\n')
+    console.log("reach 6")
 
     //message must be a buffer
 //     var fileBuffer = fs.readFile(files, function(err, buffer) {
