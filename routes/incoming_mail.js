@@ -7,7 +7,7 @@ var formidable = require('formidable');
 
 
 router.post('/incoming_mail', function(req, res){
-  console.log(req);
+  console.log("Hit here");
   var form = new formidable.IncomingForm()
   form.parse(req, function(err, fields, files) {
     if (err) {
