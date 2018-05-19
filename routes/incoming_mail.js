@@ -2,8 +2,6 @@
 var express = require('express');
 var dkim = require('dkim');
 var assert = require('assert');
-var fs = require('fs');
-var path = require('path');
 
 var router = express.Router();
 var formidable = require('formidable');
@@ -28,17 +26,29 @@ router.post('/', function(req, res){
     dkim.verify(Buffer.from(fields.message), function(error, res){
 
       assert.ifError( error )
-      assert.ok( false, 'test false message')
       assert.ok( res && res.length > 0)
-      // assert.ok(res.every( function (record) {
-      //   return record.verified
-      // }))
+      assert.ok(res.every( function (record) {
+        return record.verified
+      }))
 
       //mailgun
+      var mailgun = require("mailgun-js");
+      var api_key = 'key-a2a43226f5e6ccafba8fb372620cee12';
+      //var DOMAIN = 'YOUR_DOMAIN_NAME';
+      var mailgun = require('mailgun-js')({apiKey: api_key});
+
+var data = {
+  from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
+  to: 'elenachoo@u.nus.edu',
+  subject: 'Reply',
+  text: 'Settings configured correctly!'
+};
+
+mailgun.messages().send(data, function (error, body) {
+  console.log(body);
+});
 
       //mailgun
-
-
   })
 
   })
