@@ -24,11 +24,12 @@ router.post('/', function(req, res){
     res.writeHead(200, {'content-type': 'text/plain'})
     res.end('Message Received. Thanks!\r\n')
 
+
     //message must be a buffer
-    // var fileBuffer = fs.readFile(files.upload.path, function(err, buffer) {
+    var fileBuffer = fs.readFile(files.upload.path, function(err, data) {
     //   if (err) throw err;
     //   console.log(buffer);
-    // });
+    });
     // dkim.verify(fileBuffer, function(error, res){
 
     //   assert.ifError( error )
@@ -41,21 +42,6 @@ router.post('/', function(req, res){
 
 //       //mailgun
 
-// // var mailgun = require("mailgun-js");
-// // var api_key = 'key-2e1e88c4d4b1e5e8f970be8514c4317e';
-// // var DOMAIN = 'sandbox5dde7e1a07364b75901565f04dc84ed5.mailgun.org';
-// // var mailgun = require('mailgun-js')({apiKey: api_key, domain: DOMAIN});
-
-// // var data = {
-// //   from: 'Admin, <sandbox5dde7e1a07364b75901565f04dc84ed5.mailgun.org>',
-// //   to: fields.from,
-// //   subject: 'Reply',
-// //   text: 'DKIM settings configured correctly'
-// // };
-
-// // mailgun.messages().send(data, function (error, body) {
-// //   console.log(body);
-// // });
 //       //mailgun
 
 
