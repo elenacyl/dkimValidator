@@ -22,12 +22,12 @@ router.post('/', function(req, res){
     res.end('Message Received. Thanks!\r\n')
 
     //message must be a buffer
-    var fileBuffer = new Buffer(files);
-    dkim.verify(fileBuffer, function(req, res){
+    // var fileBuffer = new Buffer(files);
+    // dkim.verify(fileBuffer, function(req, res){
 
-      //mailgun should be here
+    //   //mailgun should be here
 
-    })
+    // })
 
   })
 });
