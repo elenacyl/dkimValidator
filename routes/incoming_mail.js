@@ -14,11 +14,16 @@ var app = module.exports = express.createServer()
     console.log(fields.message)
     res.writeHead(200, {'content-type': 'text/plain'})
     res.end('Message Received. Thanks!\r\n')
-  })
 
     //message must be a buffer
     var fileBuffer = new Buffer(files);
-    dkim.verify(fileBuffer, function(req, res));
-})
+    dkim.verify(fileBuffer, function(req, res){
+
+      //mailgun should be here
+
+    }
+
+  })
+});
 
 app.listen(3000);
