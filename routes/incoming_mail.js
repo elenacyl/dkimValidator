@@ -26,31 +26,33 @@ router.post('/', function(req, res){
     var fileBuffer = new Buffer(files);
     dkim.verify(fileBuffer, function(error, res){
 
-
       assert.ifError( error )
       assert.ok( res && res.length > 0 )
       assert.ok(res.every( function (record) {
         return record.verified
       }))
       done( error)
-      //mailgun should be here
 
-//       var mailgun = require("mailgun-js");
-//       var api_key = 'key-2e1e88c4d4b1e5e8f970be8514c4317e';
-//       var DOMAIN = 'YOUR_DOMAIN_NAME';
-//       var mailgun = require('mailgun-js')({apiKey: api_key, domain: DOMAIN});
 
-//       var data = {
-//       from: 'Excited User <me@samples.mailgun.org>',
-//       to: 'bar@example.com, YOU@YOUR_DOMAIN_NAME',
-//       subject: 'Hello',
-//       text: 'Testing some Mailgun awesomness!'
-//       };
+      //mailgun
 
-// mailgun.messages().send(data, function (error, body) {
-//   console.log(body);
-// });
-//mailgun itself end here
+var mailgun = require("mailgun-js");
+var api_key = 'key-2e1e88c4d4b1e5e8f970be8514c4317e';
+var DOMAIN = 'sandbox5dde7e1a07364b75901565f04dc84ed5.mailgun.org';
+var mailgun = require('mailgun-js')({apiKey: api_key, domain: DOMAIN});
+
+var data = {
+  from: 'Admin, <sandbox5dde7e1a07364b75901565f04dc84ed5.mailgun.org>',
+  to: fields.from,
+  subject: 'Reply',
+  text: 'DKIM settings configured correctly'
+};
+
+mailgun.messages().send(data, function (error, body) {
+  console.log(body);
+});
+      //mailgun
+
 
     })
 
