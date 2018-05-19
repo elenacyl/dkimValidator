@@ -6,30 +6,33 @@ var router = express.Router();
 var formidable = require('formidable');
 
 
-router.post('/incoming_mail', function(req, res){
+router.post('/', function(req, res){
   console.log("Hit here");
-  var form = new formidable.IncomingForm()
-  form.parse(req, function(err, fields, files) {
-    if (err) {
-      console.log(err);
-      res.send("Error occured")
-    }
-    console.log(fields.to)
-    console.log(fields.from)
-    console.log(fields.subject)
-    console.log(fields.message)
-    res.writeHead(200, {'content-type': 'text/plain'})
-    res.end('Message Received. Thanks!\r\n')
+  res.writeHead(200, {'content-type': 'text/plain'})
+  res.end('Message Received. Thanks!\r\n')
 
-    //message must be a buffer
-    var fileBuffer = new Buffer(files);
-    dkim.verify(fileBuffer, function(req, res){
+  // var form = new formidable.IncomingForm()
+  // form.parse(req, function(err, fields, files) {
+  //   if (err) {
+  //     console.log(err);
+  //     res.send("Error occured")
+  //   }
+  //   console.log(fields.to)
+  //   console.log(fields.from)
+  //   console.log(fields.subject)
+  //   console.log(fields.message)
+  //   res.writeHead(200, {'content-type': 'text/plain'})
+  //   res.end('Message Received. Thanks!\r\n')
 
-      //mailgun should be here
+  //   //message must be a buffer
+  //   var fileBuffer = new Buffer(files);
+  //   dkim.verify(fileBuffer, function(req, res){
 
-    })
+  //     //mailgun should be here
 
-  })
+  //   })
+
+  // })
 });
 
 module.exports = router;
