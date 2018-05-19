@@ -8,6 +8,7 @@ var stylus = require('stylus');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var incomingMailRouter = require('./routes/incoming_mail')
 
 var app = express();
 
@@ -24,6 +25,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/incoming_mail', incomingMailRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
