@@ -17,28 +17,22 @@ router.post('/', function(req, res){
       console.log(err);
       res.send("Error occurred")
     }
-    console.log(fields.to)
-    console.log(fields.from)
-    console.log(fields.subject)
 
-    console.log(fields.message)
+    console.log(fields.message) //send entire message as one single field
     res.writeHead(200, {'content-type': 'text/plain'})
     res.end('Message Received. Thanks!\r\n')
 
 
     //message must be a buffer
-    var fileBuffer = fs.readFile(files.file.path, function(err, data) {
-        if (err) throw err;
-        console.log(data);
-    });
-    // dkim.verify(fileBuffer, function(error, res){
 
-    //   assert.ifError( error )
-    //   assert.ok( res && res.length > 0 )
-    //   assert.ok(res.every( function (record) {
-    //     return record.verified
-    //   }))
-    //   done( error)
+    dkim.verify(fields.message, function(error, res){
+
+      assert.ifError( error )
+      assert.ok( res && res.length > 0 )
+      assert.ok(res.every( function (record) {
+        return record.verified
+      }))
+      done( error)
 
 
 //       //mailgun
@@ -46,7 +40,7 @@ router.post('/', function(req, res){
 //       //mailgun
 
 
- // })
+  })
 
   })
 });
