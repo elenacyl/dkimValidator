@@ -2,6 +2,7 @@
 var express = require('express');
 var dkim = require('dkim');
 var assert = require('assert');
+var fs = require('file-system');
 
 var router = express.Router();
 var formidable = require('formidable');
@@ -23,7 +24,10 @@ router.post('/', function(req, res){
     res.end('Message Received. Thanks!\r\n')
 
     //message must be a buffer
-    var fileBuffer = fs.readFile(files, function(err, buffer));
+    var fileBuffer = fs.readFile(files, function(err, buffer) {
+      if (err) throw err;
+      console.log(buffer);
+    });
     dkim.verify(fileBuffer, function(error, res){
 
       assert.ifError( error )
