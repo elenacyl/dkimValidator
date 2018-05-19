@@ -39,7 +39,7 @@ router.post('/', function(req, res){
 
 var data = {
   from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
-  to: 'elenachoo@u.nus.edu, sandboxccf0d831e6f34ba7b09a420ccf675a31.mailgun.org',
+  to: 'elenachoo@u.nus.edu',
   subject: 'Reply',
   text: 'Settings configured correctly!'
 };
