@@ -17,11 +17,18 @@ router.post('/', function(req, res){
       res.send("Error occurred")
     }
     console.log(fields.to)
-    console.log("reach 1")
     console.log(fields.from)
-    console.log("reach 2")
     console.log(fields.subject)
-    console.log("reach 3")
+
+
+    console.log(fields.envelope.to)
+    console.log(fields.envelope.from)
+    console.log(fields.envelope.recipients)
+    console.log(fields.helo_domain)
+    console.log(fields.remote_ip)
+    console.log(fields.spf.domain)
+    console.log(fields.spf.result)
+    
     console.log(fields.message)
     res.writeHead(200, {'content-type': 'text/plain'})
     res.end('Message Received. Thanks!\r\n')
