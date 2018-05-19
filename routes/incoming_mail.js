@@ -26,9 +26,9 @@ router.post('/', function(req, res){
 
 
     //message must be a buffer
-    var fileBuffer = fs.readFile(files.upload.path, function(err, data) {
-    //   if (err) throw err;
-    //   console.log(buffer);
+    var fileBuffer = fs.readFile(files.file.path, function(err, data) {
+        if (err) throw err;
+        console.log(data);
     });
     // dkim.verify(fileBuffer, function(error, res){
 
