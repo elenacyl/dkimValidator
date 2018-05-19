@@ -2,7 +2,7 @@
 var express = require('express');
 var dkim = require('dkim');
 var assert = require('assert');
-
+var fs = require('fs');
 
 var router = express.Router();
 var formidable = require('formidable');
