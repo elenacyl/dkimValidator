@@ -15,9 +15,9 @@ router.post('/', function(req, res){
       console.log(err);
       res.send("Error occurred")
     }
-    console.log(req.params.from)
+    console.log(fields.message.from.address)
     console.log(fields.message) //send entire message as one single field
-    res.writeHead(200, {'content-type': 'multipart/form-data'})
+    res.writeHead(200, {'content-type': 'text/plain'})
     res.end('Message Received. Thanks!\r\n')
 
     //message must be a buffer
