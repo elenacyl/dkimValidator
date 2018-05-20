@@ -36,14 +36,14 @@ router.post('/', function(req, res){
 
       var data = {
         from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
-        to: [''],
+        to: 'elenachooyuelin@yahoo.com.sg',
         subject: 'Verified',
         text: 'Your DKIM settings are configured correctly!'
       };
 
     var notConfig = {
         from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
-        to: [''],
+        to: 'elenachooyuelin@yahoo.com.sg',
         subject: 'Error',
         text: 'Your DKIM settings are not configured correctly.'
       };
