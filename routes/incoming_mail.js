@@ -15,12 +15,11 @@ router.post('/', function(req, res){
       console.log(err);
       res.send("Error occurred")
     }
-
-    //console.log(fields.message) //send entire message as one single field
+    console.log(fields.envelope[from])
+    console.log(fields.message) //send entire message as one single field
     res.writeHead(200, {'content-type': 'text/plain'})
     res.end('Message Received. Thanks!\r\n')
 
-console.log(fields.message) 
     //message must be a buffer
     dkim.verify(Buffer.from(fields.message), function(error, res){
 
