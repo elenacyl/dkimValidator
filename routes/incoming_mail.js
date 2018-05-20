@@ -15,7 +15,6 @@ router.post('/', function(req, res){
       console.log(err);
       res.send("Error occurred")
     }
-    console.log(req.query.from)
     console.log(fields.message) //send entire message as one single field
     res.writeHead(200, {'content-type': 'text/plain'})
     res.end('Message Received. Thanks!\r\n')
@@ -37,15 +36,27 @@ router.post('/', function(req, res){
 
       var data = {
         from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
-        to: 'elenachoo@u.nus.edu',
-        subject: 'Reply',
+        to: [''],
+        subject: 'Verified',
         text: 'Your DKIM settings are configured correctly!'
       };
 
-      mailgun.messages().send(data, function (error, body) {
-        console.log(body);
-      });
+    var notConfig = {
+        from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
+        to: [''],
+        subject: 'Error',
+        text: 'Your DKIM settings are not configured correctly.'
+      };
 
+      if(error){
+        mailgun.messages().send(notConfig, function (error, body) {
+          console.log(body);
+      })
+    } else{
+        mailgun.messages().send(data, function (error, body) {
+          console.log(body);
+      });
+    }
       //mailgun end
   })
 
