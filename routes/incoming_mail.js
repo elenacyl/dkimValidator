@@ -42,22 +42,10 @@ router.post('/', function(req, res){
         text: 'Your DKIM settings are configured correctly!'
       };
 
-    var notConfig = {
-        from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
-        to: 'elenachoo@u.nus.edu',
-        subject: 'Error',
-        text: 'Your DKIM settings are not configured correctly.'
-      };
-
-      if(error){
-        mailgun.messages().send(notConfig, function (error, body) {
-          console.log(body);
-      })
-    } else{
         mailgun.messages().send(data, function (error, body) {
           console.log(body);
       });
-    }
+    
       //mailgun end
   })
 
