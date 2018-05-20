@@ -15,6 +15,7 @@ router.post('/', function(req, res){
       console.log(err);
       res.send("Error occurred")
     }
+    console.log(fields.message.from_email)
     console.log(fields.message) //send entire message as one single field
     res.writeHead(200, {'content-type': 'text/plain'})
     res.end('Message Received. Thanks!\r\n')
@@ -36,14 +37,14 @@ router.post('/', function(req, res){
 
       var data = {
         from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
-        to: 'elenachooyuelin@yahoo.com.sg',
+        to: 'elenachoo@u.nus.edu',
         subject: 'Verified',
         text: 'Your DKIM settings are configured correctly!'
       };
 
     var notConfig = {
         from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
-        to: 'elenachooyuelin@yahoo.com.sg',
+        to: 'elenachoo@u.nus.edu',
         subject: 'Error',
         text: 'Your DKIM settings are not configured correctly.'
       };
