@@ -17,7 +17,7 @@ router.post('/', function(req, res){
     }
 
     console.log(fields.message) //send entire message as one single field
-    console.log(fields.message.sender)
+    console.log(fields.from)
     res.writeHead(200, {'content-type': 'text/plain'})
     res.end('Message Received. Thanks!\r\n')
 
