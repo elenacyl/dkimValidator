@@ -3,12 +3,11 @@ var express = require('express');
 var dkim = require('dkim');
 var assert = require('assert');
 
-//var router = express.Router();
-var router = express.createServer();
+var router = express.Router();
 var formidable = require('formidable');
 
 
-router.post('/', function(req, res){
+router.post('/incoming_mail', function(req, res){
 
   var form = new formidable.IncomingForm()
   form.parse(req, function(err, fields, files) {
