@@ -17,9 +17,8 @@ router.post('/', function(req, res){
     }
 
     console.log(fields.message) //send entire message as one single field
-    console.log(req.files)
     res.writeHead(200, {'content-type': 'text/plain'})
-    res.end('Message Received. Thanks!\r\n')
+    //res.end('Message Received. Thanks!\r\n')
 
     //message must be a buffer
     dkim.verify(Buffer.from(fields.message), function(error, res){
@@ -63,6 +62,8 @@ router.post('/', function(req, res){
   })
 
   })
+
+  res.end('Message Received. Thanks!\r\n')
 });
 
 module.exports = router;
