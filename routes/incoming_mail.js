@@ -39,7 +39,7 @@ router.post('/', function(req, res){
 
 var data = {
   from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
-  to: '<fields.from>',
+  to: fields.from,
   subject: 'Reply',
   text: 'DKIM Settings configured correctly!'
 };
