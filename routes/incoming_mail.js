@@ -15,13 +15,12 @@ router.post('/', function(req, res){
       console.log(err);
       res.send("Error occurred")
     }
-    console.log(fields.envelope.from)
+    console.log(fields.headers['From:'])
     console.log(fields.message) //send entire message as one single field
     res.writeHead(200, {'content-type': 'text/plain'})
     res.end('Message Received. Thanks!\r\n')
 
     //message must be a buffer
-
     dkim.verify(Buffer.from(fields.message), function(error, res){
 
       assert.ifError( error )
@@ -40,7 +39,7 @@ router.post('/', function(req, res){
         from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
         to: 'elenachoo@u.nus.edu',
         subject: 'Reply',
-        text: 'Your DKIM Settings configured correctly!'
+        text: 'Your DKIM settings are configured correctly!'
       };
 
       mailgun.messages().send(data, function (error, body) {
