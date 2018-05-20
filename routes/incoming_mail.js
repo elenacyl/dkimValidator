@@ -2,6 +2,7 @@
 var express = require('express');
 var dkim = require('dkim');
 var assert = require('assert');
+var bodyParser = require('body-parser')
 
 var router = express.Router();
 var formidable = require('formidable');
