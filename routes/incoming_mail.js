@@ -3,7 +3,8 @@ var express = require('express');
 var dkim = require('dkim');
 var assert = require('assert');
 
-var router = express.Router();
+//var router = express.Router();
+var router = express.createServer();
 var formidable = require('formidable');
 
 
@@ -15,7 +16,7 @@ router.post('/', function(req, res){
       console.log(err);
       res.send("Error occurred")
     }
-    console.log(fields.envelope["from"])
+    console.log(fields.envelope)
     console.log(fields.message) //send entire message as one single field
     res.writeHead(200, {'content-type': 'text/plain'})
     res.end('Message Received. Thanks!\r\n')
