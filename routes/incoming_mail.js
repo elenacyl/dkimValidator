@@ -15,7 +15,7 @@ router.post('/', function(req, res){
       console.log(err);
       res.send("Error occurred")
     }
-    console.log(req.body.From)
+    console.log(req.body)
     console.log(fields.message) //send entire message as one single field
     res.writeHead(200, {'content-type': 'text/plain'})
     res.end('Message Received. Thanks!\r\n')
@@ -30,24 +30,24 @@ router.post('/', function(req, res){
         return record.verified
       }))
 
-      //mailgun
+      //mailgun start
       var mailgun = require("mailgun-js");
       var api_key = 'key-a2a43226f5e6ccafba8fb372620cee12';
       var DOMAIN = 'sandboxccf0d831e6f34ba7b09a420ccf675a31.mailgun.org';
       var mailgun = require('mailgun-js')({apiKey: api_key, domain: DOMAIN});
 
-var data = {
-  from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
-  to: 'elenachoo@u.nus.edu',
-  subject: 'Reply',
-  text: 'Your DKIM Settings configured correctly!'
-};
+      var data = {
+        from: 'Admin <8c005bd79c47d00bdb24@cloudmailin.net>',
+        to: 'elenachoo@u.nus.edu',
+        subject: 'Reply',
+        text: 'Your DKIM Settings configured correctly!'
+      };
 
-mailgun.messages().send(data, function (error, body) {
-  console.log(body);
-});
+      mailgun.messages().send(data, function (error, body) {
+        console.log(body);
+      });
 
-      //mailgun
+      //mailgun end
   })
 
   })
