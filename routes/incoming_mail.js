@@ -32,8 +32,8 @@ router.post('/', function(req, res){
 
       //mailgun start
       var mailgun = require("mailgun-js");
-      var api_key = 'key-a2a43226f5e6ccafba8fb372620cee12';
-      var DOMAIN = 'sandboxccf0d831e6f34ba7b09a420ccf675a31.mailgun.org';
+      var api_key = '';
+      var DOMAIN = '';
       var mailgun = require('mailgun-js')({apiKey: api_key, domain: DOMAIN});
 
       var data = {
